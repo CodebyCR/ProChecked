@@ -2,4 +2,4 @@
 
 A project planner in Swift (mostly Swift UI).
 
-This will be used Coredata for saving projects.
+This will use coredata to store projects.
