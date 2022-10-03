@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-class Task: ObservableObject, Identifiable{
+class Task: ObservableObject, Identifiable {
     let id = UUID()
     var taskTitel: String
     var taskText: String
-    
+
     init(taskTitel: String, taskText: String) {
         self.taskTitel = taskTitel
         self.taskText = taskText
