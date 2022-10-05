@@ -9,13 +9,12 @@ import SwiftUI
 
 struct NewProjectView: View {
 
-    //Attribute
+    // Attribute
     @State var newTitel: String = ""
     @State var newDiscription: String = ""
 
-    //Project List
+    // Project List
     @State var projects: [Project] = ProjectList.projects
-
 
     var body: some View {
 
@@ -37,8 +36,6 @@ struct NewProjectView: View {
                         //                            .mask(Capsule(style: .circular))
                         .clipShape(Circle())
 
-
-
                         Image(systemName: "camera")
                             .resizable()
                             .scaledToFit()
@@ -47,10 +44,6 @@ struct NewProjectView: View {
                             .mask(Capsule(style: .continuous))
 
                     }
-
-
-
-
 
                     VStack(spacing: 20) {
 
@@ -62,7 +55,6 @@ struct NewProjectView: View {
 
                         //                        laufweite
 
-
                         TextField("Project description here...", text: $newDiscription)
                         //                            .fontWeight(.light)
                         .foregroundColor(Color("rich_ground"))
@@ -71,65 +63,57 @@ struct NewProjectView: View {
                             .frame(width: 200, height: 30, alignment: .center)
                             .foregroundColor(.white)
 
-
                     }.padding(80)
 
-
-
-
-                    //                    List{
-                    //
-                    //                        Button("Add Task") {
-                    //                            @State var newTask = Task(taskTitel: "New Titel", taskText: "new task text")
-                    //                            newTasks.append(newTask)
-                    //
-                    //                        }.foregroundColor(.black)
-                    //
-                    //
-                    //                        ForEach($projects.tasks){ task in
-                    //
-                    //                            VStack(alignment: .leading){
-                    //                                Text(task.taskTitel)
-                    //                                    .fontWeight(.bold)
-                    //
-                    //                                Text(task.taskText)
-                    //                                    .fontWeight(.regular)
-                    //                            }
-                    //
-                    //
-                    //                        }.onDelete(perform: { indexSet in
-                    //
-                    //                            if let i = indexSet.first{
-                    //                                newTasks.remove(at: i)
-                    //                            }
-                    //
-                    //                        })
-                    //                    }//End List
-
+//      List{
+//
+//            Button("Add Task") {
+//                @State var newTask = Task(taskTitel: "New Titel", taskText: "new task text")
+//                newTasks.append(newTask)
+//
+//            }.foregroundColor(.black)
+//
+//
+//            ForEach($projects.tasks){ task in
+//
+//                VStack(alignment: .leading){
+//                    Text(task.taskTitel)
+//                        .fontWeight(.bold)
+//
+//                    Text(task.taskText)
+//                        .fontWeight(.regular)
+//                }
+//
+//
+//            }.onDelete(perform: { indexSet in
+//
+//                if let i = indexSet.first{
+//                    newTasks.remove(at: i)
+//                }
+//
+//            })
+//        }//End List
 
                 }
             }.foregroundColor(.white)
 
+            // End NavigationView
 
-            //End NavigationView
-        }.navigationBarItems(trailing: Button(action: {
-            //  projects.append( newProjec  )
-            print("Save taped")
-            @State var newProject = Project(imageName: "", titel: newTitel, description: newDiscription, color: "")
+        }.navigationBarItems(trailing:
+                Button(action: {
+                //  projects.append( newProjec  )
+                print("Save taped")
+                @State var newProject = Project(imageName: "", titel: newTitel, description: newDiscription, color: "")
 
-            //Add New Project
-            projects.append(newProject)
-
-
-        }) {
+                // Add New Project
+                projects.append(newProject)
+            })
+            {
                 Text("Done")
                     .foregroundColor(.white)
             })
     }
 }
-
-
-
 
 struct NewContentView_Previews: PreviewProvider {
     static var previews: some View {

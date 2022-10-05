@@ -38,35 +38,34 @@ struct ContentView: View {
 
                     })
 
+            }.navigationBarItems(
+                leading:
+                    Text("Projects")
+                        .foregroundColor(Color("cold_spring_gray"))
+                        .listStyle(GroupedListStyle()),
+                        
+                trailing:
+                    NavigationLink(destination: NewProjectView()) {
+                    Image(systemName: "plus.circle")
+                        .foregroundColor(Color("cold_spring_gray"))
 
-                }.navigationTitle("Projects")
-                    .foregroundColor(Color("cold_spring_gray"))
-                    .listStyle(GroupedListStyle())
-                    .navigationBarItems(trailing:
-                        NavigationLink(destination: NewProjectView()) {
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(Color("cold_spring_gray"))
+            })
 
-                    })
+        }.accentColor(Color(.white))
 
-
-            }.accentColor(Color(.white))
-
-
-        }.ignoresSafeArea(.all)
+    }.ignoresSafeArea(.all)
 
     }
 
 }
 
-//struct TaskView: View{
+// struct TaskView: View{
 //    @ObservedObject var task: Task
 //
 //    var body: some View {
 //
 //    }
-//}
-
+// }
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()

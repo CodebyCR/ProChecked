@@ -7,14 +7,10 @@
 
 import SwiftUI
 
-
 struct ProjectHeadView: View {
     var project: Project
 
     var body: some View {
-
-
-
 
         if project.imageName != "" {
 
@@ -29,11 +25,10 @@ struct ProjectHeadView: View {
                     .scaledToFit()
                     .frame(width: 100, height: 100, alignment: .leading)
                     .cornerRadius(5)
-                //vielleicht auch zu capsul
+                // vielleicht auch zu capsul
             }
 
         }
-
 
         VStack(alignment: .leading) {
 
@@ -43,8 +38,6 @@ struct ProjectHeadView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(1)
                 .padding(.vertical, 1)
-
-
 
             Text(project.description)
                 .fontWeight(.light)
@@ -69,9 +62,8 @@ struct ProjectHeadView: View {
 struct ProjectHeadView_Previews: PreviewProvider {
     static var previews: some View {
 
-
         Group {
-            //First
+            // First
             HStack {
                 ProjectHeadView(project: ProjectList.projects.first!)
                     .previewDevice("IPhone 11")
@@ -80,8 +72,7 @@ struct ProjectHeadView_Previews: PreviewProvider {
             }
                 .previewInterfaceOrientation(.landscapeRight)
 
-
-            //Second
+            // Second
             VStack {
                 ProjectHeadView(project: ProjectList.projects.first!)
                     .previewDevice("IPhone 11")
