@@ -43,7 +43,7 @@ struct ContentView: View {
                     Text("Projects")
                         .foregroundColor(Color("cold_spring_gray"))
                         .listStyle(GroupedListStyle()),
-                        
+                    
                 trailing:
                     NavigationLink(destination: NewProjectView()) {
                     Image(systemName: "plus.circle")
