@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
-import CoreData
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext)
+    var modelContext: ModelContext
+    @Query
+    var projects: [Project] = ProjectList.projects
+    @State
+    var temp: String = ""
 
-    @State var projects: [Project] = ProjectList.projects
     var body: some View {
 
         ZStack {
@@ -23,7 +28,8 @@ struct ContentView: View {
                 List {
                     ForEach(projects) { project in
 
-                        NavigationLink(destination: DetailTaskView(project: project), label: {
+                        NavigationLink(destination:
+                                DetailTaskView(project: project), label: {
                                 HStack {
                                     ProjectHeadView(project: project)
                                 }
@@ -33,38 +39,32 @@ struct ContentView: View {
                     }.onDelete(perform: { indexSet in
 
                         if let index = indexSet.first {
-                            projects.remove(at: index)
+                            // TODO: Fix for swift data
+                            // projects.remove(at: index)
+                            // modelContext.delete(project)
                         }
 
                     })
 
-            }.navigationBarItems(
-                leading:
-                    Text("Projects")
+                }.navigationBarItems(
+                    leading:
+                        Text("Projects")
                         .foregroundColor(Color("cold_spring_gray"))
                         .listStyle(GroupedListStyle()),
-                trailing:
-                    NavigationLink(destination: NewProjectView()) {
-                    Image(systemName: "plus.circle")
-                        .foregroundColor(Color("cold_spring_gray"))
+                    trailing:
+                        NavigationLink(destination: NewProjectView()) {
+                        Image(systemName: "plus.circle")
+                            .foregroundColor(Color("cold_spring_gray"))
 
-            })
+                    })
 
-        }.accentColor(Color(.white))
+            }.accentColor(Color(.white))
 
-    }.ignoresSafeArea(.all)
+        }.ignoresSafeArea(.all)
 
     }
 
 }
-
-// struct TaskView: View{
-//    @ObservedObject var task: Task
-//
-//    var body: some View {
-//
-//    }
-// }
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -73,17 +73,12 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
+#Preview {
 
-    static var previews: some View {
+    ContentView()
+        .modelContainer(for: [Project.self, Task.self], inMemory: true)
+        .preferredColorScheme(.dark)
+    // use IPhone 15 Pro
+    //.previewDevice("IPhone 11")
 
-        Group {
-            ContentView()
-                .previewDevice("IPhone 11")
-            //                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            ContentView()
-                .preferredColorScheme(.dark)
-                .previewDevice("IPhone 11")
-        }
-    }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ProjectHeadView: View {
     var project: Project
 
+
     var body: some View {
 
         if project.imageName != "" {
@@ -31,7 +32,6 @@ struct ProjectHeadView: View {
         }
 
         VStack(alignment: .leading) {
-
             Text(project.titel)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
@@ -39,19 +39,19 @@ struct ProjectHeadView: View {
                 .minimumScaleFactor(1)
                 .padding(.vertical, 1)
 
-            Text(project.description)
+            Text(project.detailInfo)
                 .fontWeight(.light)
                 .foregroundColor(Color("rich_ground"))
                 .lineLimit(3)
 
-            //            // Tap
+            // Tap
             //            .gesture(
             //
             //                LongPressGesture(minimumDuration: 0)
             //                    .onEnded {_ in
             //
-            //        //                    self.todo.toggleItem(itemId: self.itemId)
-            //        //                    self.hapticSuccess()
+            //                    self.todo.toggleItem(itemId: self.itemId)
+            //                    self.hapticSuccess()
             //                        print("long pressed")
             //
             //            })

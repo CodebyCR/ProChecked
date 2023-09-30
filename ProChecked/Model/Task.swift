@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
-class Task: ObservableObject, Identifiable {
+@Model
+class Task: Identifiable {
     let id = UUID()
     var taskTitel: String
     var taskText: String
+    
     init(taskTitel: String, taskText: String) {
         self.taskTitel = taskTitel
         self.taskText = taskText

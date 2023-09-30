@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
-class Project: ObservableObject, Identifiable {
+@Model
+class Project: Identifiable {
     let id = UUID()
     let imageName: String
     let titel: String
-    let description: String
+    let detailInfo: String
     let color: String
-    @Published var tasks = [Task]()
+    @Relationship() var tasks = [Task]()
 
     init(imageName: String, titel: String, description: String, color: String) {
         self.imageName = imageName
         self.titel = titel
-        self.description = description
+        self.detailInfo = description
         self.color = color
+        self.tasks = []
     }
 
 }

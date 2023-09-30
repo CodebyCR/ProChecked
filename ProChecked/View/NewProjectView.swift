@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct NewProjectView: View {
-
-    // Attribute
-    @State var newTitel: String = ""
-    @State var newDiscription: String = ""
+    @Environment(\.modelContext)
+    var modelContext
 
     // Project List
-    @State var projects: [Project] = ProjectList.projects
+    @State
+    var projects: [Project] = ProjectList.projects
+
+    // Attribute
+    @State
+    var newTitel: String = ""
+    @State
+    var newDiscription: String = ""
+
+
 
     var body: some View {
 
@@ -69,7 +76,7 @@ struct NewProjectView: View {
 //
 //            Button("Add Task") {
 //                @State var newTask = Task(taskTitel: "New Titel", taskText: "new task text")
-//                newTasks.append(newTask)
+//                project.newTasks.append(newTask)
 //
 //            }.foregroundColor(.black)
 //
@@ -103,10 +110,16 @@ struct NewProjectView: View {
                 Button(action: {
                 //  projects.append( newProjec  )
                 print("Save taped")
-                @State var newProject = Project(imageName: "", titel: newTitel, description: newDiscription, color: "")
+                let newProject = Project(
+                    imageName: "",
+                    titel: newTitel,
+                    description: newDiscription,
+                    color: "")
+
 
                 // Add New Project
-                projects.append(newProject)
+                modelContext.insert(newProject)
+
             })
             {
                 Text("Done")
@@ -115,15 +128,20 @@ struct NewProjectView: View {
     }
 }
 
-struct NewContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            NewProjectView()
-                .previewDevice("IPhone 11")
-
-            NewProjectView()
-                .previewDevice("IPhone 11")
-                .preferredColorScheme(.dark)
-        }
-    }
+#Preview {
+    NewProjectView()
+        .modelContainer(for: [Project.self, Task.self], inMemory: true)
 }
+
+//struct NewContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            NewProjectView()
+//                .previewDevice("IPhone 11")
+//
+//            NewProjectView()
+//                .previewDevice("IPhone 11")
+//                .preferredColorScheme(.dark)
+//        }
+//    }
+//}
