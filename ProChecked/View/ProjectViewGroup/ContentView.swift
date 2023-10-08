@@ -63,15 +63,7 @@ struct ContentView: View {
 
         }.ignoresSafeArea(.all)
     }
-
 }
-
-// private let itemFormatter: DateFormatter = {
-//    let formatter = DateFormatter()
-//    formatter.dateStyle = .short
-//    formatter.timeStyle = .medium
-//    return formatter
-// }()
 
 #if DEBUG
 @available(iOS 17.0, *)

@@ -116,20 +116,7 @@ struct NewProjectView: View {
     }
 }
 
-#Preview {
+#Preview("New Project View") {
     NewProjectView()
         .modelContainer(for: [Project.self, Task.self], inMemory: true)
 }
-
-// struct NewContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            NewProjectView()
-//                .previewDevice("IPhone 11")
-//
-//            NewProjectView()
-//                .previewDevice("IPhone 11")
-//                .preferredColorScheme(.dark)
-//        }
-//    }
-// }

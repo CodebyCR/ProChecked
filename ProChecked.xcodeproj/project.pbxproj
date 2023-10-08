@@ -99,12 +99,10 @@
 		8E3D19AA2822D61900BA3B13 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8E72AEBF281B272D00B1971C /* ContentView.swift */,
-				8E72AEF1281B2D6100B1971C /* NewProjectView.swift */,
+				8EC43AB42AD2E23900A83992 /* ProjectViewGroup */,
 				8E72AEEF281B2D3600B1971C /* DetailTaskView.swift */,
 				8E3D19AB2822DEF500BA3B13 /* ProjectHeadView.swift */,
-				8E390BD22AC8131000B9AFE4 /* AddTaskButtonView.swift */,
-				8E390BD42AC8135F00B9AFE4 /* TaskItemView.swift */,
+				8EC43AB32AD2E1A200A83992 /* TaskViewGroup */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +163,24 @@
 				8E72AEDF281B273000B1971C /* ProCheckedUITestsLaunchTests.swift */,
 			);
 			path = ProCheckedUITests;
+			sourceTree = "<group>";
+		};
+		8EC43AB32AD2E1A200A83992 /* TaskViewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				8E390BD22AC8131000B9AFE4 /* AddTaskButtonView.swift */,
+				8E390BD42AC8135F00B9AFE4 /* TaskItemView.swift */,
+			);
+			path = TaskViewGroup;
+			sourceTree = "<group>";
+		};
+		8EC43AB42AD2E23900A83992 /* ProjectViewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				8E72AEF1281B2D6100B1971C /* NewProjectView.swift */,
+				8E72AEBF281B272D00B1971C /* ContentView.swift */,
+			);
+			path = ProjectViewGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

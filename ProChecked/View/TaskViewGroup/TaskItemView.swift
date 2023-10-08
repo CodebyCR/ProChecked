@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TaskItemView: View {
+//    @Environment(\.modelContext)
+//    private var modelContext: ModelContext
     @State
     var task: Task
 
@@ -42,8 +44,9 @@ struct TaskItemView: View {
 #if DEBUG
 @available(iOS 17.0, *)
 #Preview {
-    TaskItemView(task: ProjectList.projects.first!.tasks.first!)
-        .modelContainer(for: [Project.self, Task.self], inMemory: true)
+    var previewTask: Task = ProjectList.projects.first!.tasks.first!
+    return TaskItemView(task: previewTask)
+//        .modelContainer(for: [Project.self, Task.self], inMemory: true)
 //        .preferredColorScheme(.dark)
 //        .previewInterfaceOrientation(.landscapeRight)
 }

@@ -5,14 +5,15 @@
 //  Created by Christoph Rohde on 20.01.22.
 //
 
+import SwiftData
 import SwiftUI
 
 struct DetailTaskView: View {
     @Environment(\.modelContext)
-    private var modelContext
+    private var modelContext: ModelContext
     @Bindable
     var project: Project
-    var inLandscape = UIDevice.current.orientation.isLandscape
+    private let inLandscape = UIDevice.current.orientation.isLandscape
     private let grayGradient = Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")])
 
     var body: some View {
@@ -81,13 +82,9 @@ struct DetailTaskView: View {
 
 #if DEBUG
 @available(iOS 17.0, *)
-#Preview("DetailTaskView") {
-    DetailTaskView(project: ProjectList.projects.first!,
-                   inLandscape: false)
-        .modelContainer(for: [Project.self, Task.self], inMemory: true)
-//        .preferredColorScheme(.dark)
-    // use IPhone 15 Pro
-    // .previewDevice("IPhone 11")
-    // .previewInterfaceOrientation(.landscapeRight)
+#Preview("Detail Task View") {
+    var previewProject: Project = ProjectList.projects.first!
+    return DetailTaskView(project: previewProject)
+//        .modelContainer(for: [Project.self, Task.self], inMemory: true)
 }
 #endif
