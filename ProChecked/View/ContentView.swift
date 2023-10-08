@@ -5,31 +5,31 @@
 //  Created by Christoph Rohde on 28.04.22.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext)
-    var modelContext: ModelContext
+    private var modelContext: ModelContext
     @Query
-    var projects: [Project] = ProjectList.projects
+    private var projects: [Project] = ProjectList.projects
     @State
-    var temp: String = ""
+    private var temp: String = ""
+    /// **constant**
+    private let grayGradient = Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")])
 
     var body: some View {
-
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: grayGradient,
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
 
             NavigationView {
-
                 List {
                     ForEach(projects) { project in
 
                         NavigationLink(destination:
-                                DetailTaskView(project: project), label: {
+                            DetailTaskView(project: project), label: {
                                 HStack {
                                     ProjectHeadView(project: project)
                                 }
@@ -39,6 +39,7 @@ struct ContentView: View {
                     }.onDelete(perform: { indexSet in
 
                         if let index = indexSet.first {
+                            print("index: \(index)")
                             // TODO: Fix for swift data
                             // projects.remove(at: index)
                             // modelContext.delete(project)
@@ -48,11 +49,11 @@ struct ContentView: View {
 
                 }.navigationBarItems(
                     leading:
-                        Text("Projects")
+                    Text("Projects")
                         .foregroundColor(Color("cold_spring_gray"))
                         .listStyle(GroupedListStyle()),
                     trailing:
-                        NavigationLink(destination: NewProjectView()) {
+                    NavigationLink(destination: NewProjectView()) {
                         Image(systemName: "plus.circle")
                             .foregroundColor(Color("cold_spring_gray"))
 
@@ -61,24 +62,22 @@ struct ContentView: View {
             }.accentColor(Color(.white))
 
         }.ignoresSafeArea(.all)
-
     }
 
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+// private let itemFormatter: DateFormatter = {
+//    let formatter = DateFormatter()
+//    formatter.dateStyle = .short
+//    formatter.timeStyle = .medium
+//    return formatter
+// }()
 
+#if DEBUG
+@available(iOS 17.0, *)
 #Preview {
-
     ContentView()
         .modelContainer(for: [Project.self, Task.self], inMemory: true)
         .preferredColorScheme(.dark)
-    // use IPhone 15 Pro
-    //.previewDevice("IPhone 11")
-
 }
+#endif

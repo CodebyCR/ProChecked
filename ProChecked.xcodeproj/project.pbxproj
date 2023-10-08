@@ -14,7 +14,6 @@
 		8E72AEC0281B272D00B1971C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72AEBF281B272D00B1971C /* ContentView.swift */; };
 		8E72AEC2281B272F00B1971C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E72AEC1281B272F00B1971C /* Assets.xcassets */; };
 		8E72AEC5281B272F00B1971C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E72AEC4281B272F00B1971C /* Preview Assets.xcassets */; };
-		8E72AEC7281B272F00B1971C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72AEC6281B272F00B1971C /* Persistence.swift */; };
 		8E72AECA281B272F00B1971C /* ProChecked.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E72AEC8281B272F00B1971C /* ProChecked.xcdatamodeld */; };
 		8E72AED4281B273000B1971C /* ProCheckedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72AED3281B273000B1971C /* ProCheckedTests.swift */; };
 		8E72AEDE281B273000B1971C /* ProCheckedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72AEDD281B273000B1971C /* ProCheckedUITests.swift */; };
@@ -51,7 +50,6 @@
 		8E72AEBF281B272D00B1971C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8E72AEC1281B272F00B1971C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E72AEC4281B272F00B1971C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8E72AEC6281B272F00B1971C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		8E72AEC9281B272F00B1971C /* ProChecked.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProChecked.xcdatamodel; sourceTree = "<group>"; };
 		8E72AECF281B273000B1971C /* ProCheckedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProCheckedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E72AED3281B273000B1971C /* ProCheckedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProCheckedTests.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 			children = (
 				8E72AEBD281B272D00B1971C /* ProCheckedApp.swift */,
 				8E72AEC1281B272F00B1971C /* Assets.xcassets */,
-				8E72AEC6281B272F00B1971C /* Persistence.swift */,
 				8E72AEC8281B272F00B1971C /* ProChecked.xcdatamodeld */,
 				8E72AEC3281B272F00B1971C /* Preview Content */,
 				8E3D19AA2822D61900BA3B13 /* View */,
@@ -306,7 +303,7 @@
 		8E1F34FE28EACFF500ADDFA4 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -317,9 +314,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/zsh;
-			shellScript = "#if [[ \"$(uname -m)\" == arm64 ]]; then\n#    export PATH=\"/opt/homebrew/bin:$PATH\"\n#fi\n\n#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
+			shellScript = "#if [[ \"$(uname -m)\" == arm64 ]]; then\n#    export PATH=\"/opt/homebrew/bin:$PATH\"\n#fi\n\n#if which swiftlint > /dev/null; then\n#  swiftlint\n#else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n\nif which swift-format >/dev/null; then\n    swift-format -m format -i -r ${PROJECT_DIR}\nelse\n    echo \"warning: swift-format not installed\"\nfi\n\nif which swift-format >/dev/null; then\n    swift-format -m lint -r ${PROJECT_DIR}\n    exit 0\nelse\n    echo \"warning: swift-format not installed\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -330,7 +327,6 @@
 			files = (
 				8EF4CC17281EB56D003E9EA8 /* Task.swift in Sources */,
 				8E3D19AC2822DEF500BA3B13 /* ProjectHeadView.swift in Sources */,
-				8E72AEC7281B272F00B1971C /* Persistence.swift in Sources */,
 				8E72AEF2281B2D6100B1971C /* NewProjectView.swift in Sources */,
 				8E390BD52AC8135F00B9AFE4 /* TaskItemView.swift in Sources */,
 				8E72AEC0281B272D00B1971C /* ContentView.swift in Sources */,

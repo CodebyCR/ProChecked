@@ -10,11 +10,8 @@ import SwiftUI
 struct ProjectHeadView: View {
     var project: Project
 
-
     var body: some View {
-
         if project.imageName != "" {
-
             ZStack {
                 Color(project.color.isEmpty ? "rich_gray" : project.color)
                     .opacity(0.6)
@@ -28,11 +25,10 @@ struct ProjectHeadView: View {
                     .cornerRadius(5)
                 // vielleicht auch zu capsul
             }
-
         }
 
         VStack(alignment: .leading) {
-            Text(project.titel)
+            Text(project.title)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
                 .lineLimit(1)
@@ -59,25 +55,11 @@ struct ProjectHeadView: View {
     }
 }
 
-struct ProjectHeadView_Previews: PreviewProvider {
-    static var previews: some View {
-
-        Group {
-            // First
-            HStack {
-                ProjectHeadView(project: ProjectList.projects.first!)
-                    .previewDevice("IPhone 11")
-                    .preferredColorScheme(.dark)
-
-            }
-                .previewInterfaceOrientation(.landscapeRight)
-
-            // Second
-            VStack {
-                ProjectHeadView(project: ProjectList.projects.first!)
-                    .previewDevice("IPhone 11")
-            }
-
-        }
-    }
+#if DEBUG
+@available(iOS 17.0, *)
+#Preview {
+    ProjectHeadView(project: ProjectList.projects.first!)
+        .modelContainer(for: [Project.self, Task.self], inMemory: true)
+        .preferredColorScheme(.dark)
 }
+#endif

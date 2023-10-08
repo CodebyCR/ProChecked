@@ -17,31 +17,25 @@ struct NewProjectView: View {
 
     // Attribute
     @State
-    var newTitel: String = ""
+    var newTitle: String = ""
     @State
-    var newDiscription: String = ""
-
-
+    var newDescription: String = ""
 
     var body: some View {
-
         NavigationView {
-
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing)
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
 
                 VStack {
-
                     ZStack {
-
                         Color(.black)
                             .frame(width: 100, height: 100, alignment: .top)
                             .opacity(0.6)
-                        //                            .mask(Capsule(style: .circular))
-                        .clipShape(Circle())
+                            //                            .mask(Capsule(style: .circular))
+                            .clipShape(Circle())
 
                         Image(systemName: "camera")
                             .resizable()
@@ -49,22 +43,20 @@ struct NewProjectView: View {
                             .frame(width: 40, height: 40)
                             .frame(width: 100, height: 100)
                             .mask(Capsule(style: .continuous))
-
                     }
 
                     VStack(spacing: 20) {
-
-                        TextField("Titel", text: $newTitel)
-                        //                            .fontWeight(.bold)
-                        .lineLimit(1)
+                        TextField("Titel", text: $newTitle)
+                            //                            .fontWeight(.bold)
+                            .lineLimit(1)
                             .minimumScaleFactor(0.5)
                             .padding(.vertical, 1)
 
                         //                        laufweite
 
-                        TextField("Project description here...", text: $newDiscription)
-                        //                            .fontWeight(.light)
-                        .foregroundColor(Color("rich_ground"))
+                        TextField("Project description here...", text: $newDescription)
+                            //                            .fontWeight(.light)
+                            .foregroundColor(Color("rich_ground"))
                             .lineLimit(5)
                             .padding()
                             .frame(width: 200, height: 30, alignment: .center)
@@ -100,30 +92,26 @@ struct NewProjectView: View {
 //
 //            })
 //        }//End List
-
                 }
             }.foregroundColor(.white)
 
             // End NavigationView
 
         }.navigationBarItems(trailing:
-                Button(action: {
-                //  projects.append( newProjec  )
-                print("Save taped")
+            Button(action: {
+                print("Save tapped")
                 let newProject = Project(
                     imageName: "",
-                    titel: newTitel,
-                    description: newDiscription,
+                    title: newTitle,
+                    description: newDescription,
                     color: "")
 
-
-                // Add New Project
+                // Füge das neue Projekt hinzu
                 modelContext.insert(newProject)
-
-            })
-            {
+            }) {
                 Text("Done")
                     .foregroundColor(.white)
+
             })
     }
 }
@@ -133,7 +121,7 @@ struct NewProjectView: View {
         .modelContainer(for: [Project.self, Task.self], inMemory: true)
 }
 
-//struct NewContentView_Previews: PreviewProvider {
+// struct NewContentView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        Group {
 //            NewProjectView()
@@ -144,4 +132,4 @@ struct NewProjectView: View {
 //                .preferredColorScheme(.dark)
 //        }
 //    }
-//}
+// }

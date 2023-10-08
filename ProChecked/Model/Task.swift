@@ -5,17 +5,17 @@
 //  Created by Christoph Rohde on 01.05.22.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @Model
-class Task: Identifiable {
+class Task {
     let id = UUID()
-    var taskTitel: String
+    var taskTitle: String
     var taskText: String
-    
-    init(taskTitel: String, taskText: String) {
-        self.taskTitel = taskTitel
+
+    init(taskTitle: String, taskText: String) {
+        self.taskTitle = taskTitle
         self.taskText = taskText
     }
 }

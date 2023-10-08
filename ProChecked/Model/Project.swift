@@ -5,56 +5,72 @@
 //  Created by Christoph Rohde on 20.01.22.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @Model
-class Project: Identifiable {
+class Project {
     let id = UUID()
     let imageName: String
-    let titel: String
+    let title: String
     let detailInfo: String
     let color: String
-    @Relationship() var tasks = [Task]()
+    @Relationship
+    var tasks: [Task]
 
-    init(imageName: String, titel: String, description: String, color: String) {
+//    @available(*, deprecated, message: "Use Color directly")
+    init(imageName: String, title: String, description: String, color: String) {
         self.imageName = imageName
-        self.titel = titel
+        self.title = title
         self.detailInfo = description
         self.color = color
         self.tasks = []
     }
 
+//    init(title: String, description: String, image: String?, color: Color = getRandomColor()) {
+//        self.imageName = imageName
+//        self.title = title
+//        self.detailInfo = description
+//        self.color = color
+//        self.tasks = []
+//    }
 }
 
-struct ProjectList {
+func getRandomColor() -> Color {
+    let colors: [Color] = [.purple, .indigo, .blue, .cyan]
+    let totalColor = colors.shuffled().randomElement() ?? Color.purple
+    print(totalColor)
+    return totalColor
+}
 
+enum ProjectList {
     static let projects = [
+        Project(imageName: "Qarla",
+                title: "Qarla",
+                description: "A Python program for code and decoder QR Codes with some fetures.",
+                color: "drip_purple")
+//        ,
 
-        Project(imageName: "Qarla", titel: "Qarla",
-            description: "A Python program for code and decoder QR Codes with some fetures.", color: ""),
-
-        Project(imageName: "", titel: "Sudoku",
-            description: "Sudodu in C++ mit einstelbaren schwirgkeitsgrad. Coming Soon", color: "drip_purple"),
-
-        Project(imageName: "", titel: "IP Adressen Rechner",
-            description: "Subnetz generator für ip v4.", color: "drip_purple"),
-
-        Project(imageName: "ProChecked_Icon", titel: "ProChecked",
-            description: """
-                        KanbanList with some features. -features: optionale
-                        RSA verschülung über ein Password, für manche projecte
-                        """,
-            color: ""),
-
-        Project(imageName: "", titel: "Web Scraping",
-            description: """
-                        App / Anwendung  Diese soll für die Webseite 'Gearspace'Favorisierte
-                        Einträgen von Accounts anzeigt- die Möglichkeit bieten den
-                        gesamten Foren Eintrag zu sehen.- sich
-                        selbst jede Stunde/ oder bei Benutzung updaten.
-                        """,
-            color: "drip_purple")
+//        Project(imageName: "", titel: "Sudoku",
+//            description: "Sudodu in C++ mit einstelbaren schwirgkeitsgrad. Coming Soon", color: "drip_purple"),
+//
+//        Project(imageName: "", titel: "IP Adressen Rechner",
+//            description: "Subnetz generator für ip v4.", color: "drip_purple"),
+//
+//        Project(imageName: "ProChecked_Icon", titel: "ProChecked",
+//            description: """
+//                        KanbanList with some features. -features: optionale
+//                        RSA verschülung über ein Password, für manche projecte
+//                        """,
+//            color: ""),
+//
+//        Project(imageName: "", titel: "Web Scraping",
+//            description: """
+//                        App / Anwendung  Diese soll für die Webseite 'Gearspace'Favorisierte
+//                        Einträgen von Accounts anzeigt- die Möglichkeit bieten den
+//                        gesamten Foren Eintrag zu sehen.- sich
+//                        selbst jede Stunde/ oder bei Benutzung updaten.
+//                        """,
+//            color: "drip_purple")
     ]
-
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskItemView: View {
-    @State 
+    @State
     var task: Task
 
     var body: some View {
@@ -20,8 +20,7 @@ struct TaskItemView: View {
 
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-
-                    TextField("Titel", text: $task.taskTitel)
+                    TextField("Title", text: $task.taskTitle)
                         .multilineTextAlignment(.leading)
 
                     // For taskText
@@ -32,22 +31,20 @@ struct TaskItemView: View {
                             .opacity(0)
                             .padding(.all, 8)
                     }
-
                 }
                 .padding(.horizontal, 12.0)
                 .padding(.vertical, 10.0)
-
             }
         }
     }
 }
 
+#if DEBUG
+@available(iOS 17.0, *)
 #Preview {
-
     TaskItemView(task: ProjectList.projects.first!.tasks.first!)
         .modelContainer(for: [Project.self, Task.self], inMemory: true)
-        .preferredColorScheme(.dark)
-        // use IPhone 15 Pro
-        //.previewDevice("IPhone 11")
-        //.previewInterfaceOrientation(.landscapeRight)
+//        .preferredColorScheme(.dark)
+//        .previewInterfaceOrientation(.landscapeRight)
 }
+#endif

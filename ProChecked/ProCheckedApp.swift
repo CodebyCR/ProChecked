@@ -12,9 +12,7 @@ struct ProCheckedApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [Task.self, Project.self])
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-
+                .modelContainer(for: [Project.self, Task.self])
         }
     }
 }

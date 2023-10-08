@@ -9,18 +9,18 @@ import SwiftUI
 
 struct DetailTaskView: View {
     @Environment(\.modelContext)
-    var modelContext
+    private var modelContext
     @Bindable
     var project: Project
     var inLandscape = UIDevice.current.orientation.isLandscape
-    let grayGradient = Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")])
+    private let grayGradient = Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")])
 
     var body: some View {
         //        NavigationView{
         ZStack {
             LinearGradient(gradient: grayGradient,
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing)
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 VStack {
@@ -50,17 +50,16 @@ struct DetailTaskView: View {
                     Spacer()
                 }
 
-                ScrollView {
-                    ForEach(project.tasks) { task in
+                NavigationView {
+                    ScrollView {
+                        ForEach(project.tasks) { task in
 
-                        TaskItemView(task: task)
+                            TaskItemView(task: task)
 
-                    }.onDelete(perform: { indexSet in
-                        if let index = indexSet.first {
-                            project.tasks.remove(at: index)
-                        }
-                    })
+                        }.onDelete(perform: deleteTask)
+                    }
                 }
+
 //                func deleteTask(indexSet: IndexSet){
 //                    //indexSet.forEach(task.
 //                    for index in indexSet {
@@ -71,16 +70,24 @@ struct DetailTaskView: View {
             }
         }
     }
+
+    private func deleteTask(indexSet: IndexSet) {
+        for index in indexSet {
+            let taskToRemove = project.tasks.remove(at: index)
+            modelContext.delete(taskToRemove)
+        }
+    }
 }
 
+#if DEBUG
+@available(iOS 17.0, *)
 #Preview("DetailTaskView") {
-
     DetailTaskView(project: ProjectList.projects.first!,
-                    inLandscape: false)
+                   inLandscape: false)
         .modelContainer(for: [Project.self, Task.self], inMemory: true)
-        .preferredColorScheme(.dark)
-        // use IPhone 15 Pro
-        //.previewDevice("IPhone 11")
-        //.previewInterfaceOrientation(.landscapeRight)
-
+//        .preferredColorScheme(.dark)
+    // use IPhone 15 Pro
+    // .previewDevice("IPhone 11")
+    // .previewInterfaceOrientation(.landscapeRight)
 }
+#endif
