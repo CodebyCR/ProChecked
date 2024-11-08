@@ -93,26 +93,28 @@ struct NewProjectView: View {
 //            })
 //        }//End List
                 }
-            }.foregroundColor(.white)
+            }
+            .foregroundColor(.white)
 
             // End NavigationView
 
-        }.navigationBarItems(trailing:
-            Button(action: {
-                print("Save tapped")
-                let newProject = Project(
-                    imageName: "",
-                    title: newTitle,
-                    description: newDescription,
-                    color: "")
+        }
+        .navigationBarItems(trailing:
+        Button {
+            print("Save tapped")
+            let newProject = Project(
+                imageName: "",
+                title: newTitle,
+                description: newDescription,
+                color: "")
 
                 // Füge das neue Projekt hinzu
                 modelContext.insert(newProject)
-            }) {
+        } label: {
                 Text("Done")
                     .foregroundColor(.white)
-
-            })
+        }
+        )
     }
 }
 

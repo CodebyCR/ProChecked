@@ -10,11 +10,11 @@ import SwiftUI
 
 @Model
 class Project {
-    let id = UUID()
-    let imageName: String
-    let title: String
-    let detailInfo: String
-    let color: String
+    private(set) var id = UUID()
+    private(set) var imageName: String
+    private(set) var title: String
+    private(set) var detailInfo: String
+    private(set) var color: String
     @Relationship
     var tasks: [Task]
 
@@ -45,8 +45,8 @@ func getRandomColor() -> Color {
 
 enum ProjectList {
     static let projects = [
-        Project(imageName: "Qarla",
-                title: "Qarla",
+        Project(imageName: "Qrala",
+                title: "Qrala",
                 description: "A Python program for code and decoder QR Codes with some fetures.",
                 color: "drip_purple")
 //        ,
