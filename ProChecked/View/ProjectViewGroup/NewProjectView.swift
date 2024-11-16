@@ -5,6 +5,7 @@
 //  Created by Christoph Rohde on 27.01.22.
 //
 
+import SwiftData
 import SwiftUI
 
 struct NewProjectView: View {
@@ -12,8 +13,8 @@ struct NewProjectView: View {
     var modelContext
 
     // Project List
-    @State
-    var projects: [Project] = ProjectList.projects
+    @Query
+    private var projects: [Project]
 
     // Attribute
     @State
@@ -97,23 +98,22 @@ struct NewProjectView: View {
             .foregroundColor(.white)
 
             // End NavigationView
-
         }
         .navigationBarItems(trailing:
-        Button {
-            print("Save tapped")
-            let newProject = Project(
-                imageName: "",
-                title: newTitle,
-                description: newDescription,
-                color: "")
+            Button {
+                print("Save tapped")
+                let newProject = Project(
+                    imageName: "",
+                    title: newTitle,
+                    description: newDescription,
+                    color: "")
 
                 // Füge das neue Projekt hinzu
                 modelContext.insert(newProject)
-        } label: {
+            } label: {
                 Text("Done")
                     .foregroundColor(.white)
-        }
+            }
         )
     }
 }

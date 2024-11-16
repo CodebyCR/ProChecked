@@ -41,13 +41,13 @@ struct TaskItemView: View {
     }
 }
 
-#if DEBUG
-@available(iOS 17.0, *)
-#Preview {
-    var previewTask: Task = ProjectList.projects.first!.tasks.first!
-    return TaskItemView(task: previewTask)
-//        .modelContainer(for: [Project.self, Task.self], inMemory: true)
-//        .preferredColorScheme(.dark)
-//        .previewInterfaceOrientation(.landscapeRight)
-}
-#endif
+//#if DEBUG
+//@available(iOS 17.0, *)
+//#Preview {
+//    var previewTask: Task = ProjectList.projects.first!.tasks.first!
+//    return TaskItemView(task: previewTask)
+////        .modelContainer(for: [Project.self, Task.self], inMemory: true)
+////        .preferredColorScheme(.dark)
+////        .previewInterfaceOrientation(.landscapeRight)
+//}
+//#endif

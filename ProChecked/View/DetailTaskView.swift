@@ -23,6 +23,7 @@ struct DetailTaskView: View {
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
+
             VStack {
                 VStack {
                     if inLandscape {
@@ -80,11 +81,11 @@ struct DetailTaskView: View {
     }
 }
 
-#if DEBUG
-@available(iOS 17.0, *)
-#Preview("Detail Task View") {
-    var previewProject: Project = ProjectList.projects.first!
-    return DetailTaskView(project: previewProject)
-//        .modelContainer(for: [Project.self, Task.self], inMemory: true)
-}
-#endif
+// #if DEBUG
+// @available(iOS 17.0, *)
+// #Preview("Detail Task View") {
+//    var previewProject: Project = ProjectList.projects.first!
+//    return DetailTaskView(project: previewProject)
+////        .modelContainer(for: [Project.self, Task.self], inMemory: true)
+// }
+// #endif

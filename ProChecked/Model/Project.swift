@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-class Project {
+final class Project {
     private(set) var id = UUID()
     private(set) var imageName: String
     private(set) var title: String
@@ -43,34 +43,34 @@ func getRandomColor() -> Color {
     return totalColor
 }
 
-enum ProjectList {
-    static let projects = [
-        Project(imageName: "Qrala",
-                title: "Qrala",
-                description: "A Python program for code and decoder QR Codes with some fetures.",
-                color: "drip_purple")
-//        ,
-
-//        Project(imageName: "", titel: "Sudoku",
-//            description: "Sudodu in C++ mit einstelbaren schwirgkeitsgrad. Coming Soon", color: "drip_purple"),
+// enum ProjectList {
+//    static let projects = [
+//        Project(imageName: "Qrala",
+//                title: "Qrala",
+//                description: "A Python program for code and decoder QR Codes with some fetures.",
+//                color: "drip_purple")
+////        ,
 //
-//        Project(imageName: "", titel: "IP Adressen Rechner",
-//            description: "Subnetz generator für ip v4.", color: "drip_purple"),
-//
-//        Project(imageName: "ProChecked_Icon", titel: "ProChecked",
-//            description: """
-//                        KanbanList with some features. -features: optionale
-//                        RSA verschülung über ein Password, für manche projecte
-//                        """,
-//            color: ""),
-//
-//        Project(imageName: "", titel: "Web Scraping",
-//            description: """
-//                        App / Anwendung  Diese soll für die Webseite 'Gearspace'Favorisierte
-//                        Einträgen von Accounts anzeigt- die Möglichkeit bieten den
-//                        gesamten Foren Eintrag zu sehen.- sich
-//                        selbst jede Stunde/ oder bei Benutzung updaten.
-//                        """,
-//            color: "drip_purple")
-    ]
-}
+////        Project(imageName: "", titel: "Sudoku",
+////            description: "Sudodu in C++ mit einstelbaren schwirgkeitsgrad. Coming Soon", color: "drip_purple"),
+////
+////        Project(imageName: "", titel: "IP Adressen Rechner",
+////            description: "Subnetz generator für ip v4.", color: "drip_purple"),
+////
+////        Project(imageName: "ProChecked_Icon", titel: "ProChecked",
+////            description: """
+////                        KanbanList with some features. -features: optionale
+////                        RSA verschülung über ein Password, für manche projecte
+////                        """,
+////            color: ""),
+////
+////        Project(imageName: "", titel: "Web Scraping",
+////            description: """
+////                        App / Anwendung  Diese soll für die Webseite 'Gearspace'Favorisierte
+////                        Einträgen von Accounts anzeigt- die Möglichkeit bieten den
+////                        gesamten Foren Eintrag zu sehen.- sich
+////                        selbst jede Stunde/ oder bei Benutzung updaten.
+////                        """,
+////            color: "drip_purple")
+//    ]
+// }

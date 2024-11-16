@@ -35,11 +35,11 @@ struct AddTaskButton: View {
     }
 }
 
-#if DEBUG
-@available(iOS 17.0, *)
-#Preview("Add Task Button") {
-    AddTaskButton(project: ProjectList.projects.first!)
-        .modelContainer(for: [Project.self, Task.self], inMemory: true)
-        .preferredColorScheme(.dark)
-}
-#endif
+//#if DEBUG
+//@available(iOS 17.0, *)
+//#Preview("Add Task Button") {
+//    AddTaskButton(project: ProjectList.projects.first!)
+//        .modelContainer(for: [Project.self, Task.self], inMemory: true)
+//        .preferredColorScheme(.dark)
+//}
+//#endif

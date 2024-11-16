@@ -12,11 +12,18 @@ struct ContentView: View {
     @Environment(\.modelContext)
     private var modelContext: ModelContext
     @Query
-    private var projects: [Project] = ProjectList.projects
+    var projects: [Project] // = ProjectList.projects
+
     @State
     private var temp: String = ""
     /// **constant**
     private let grayGradient = Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")])
+
+    private func deleteProject(indexSet: IndexSet) {
+        indexSet
+            .map { projects[$0] }
+            .forEach { modelContext.delete($0) }
+    }
 
     var body: some View {
         ZStack {
@@ -36,16 +43,7 @@ struct ContentView: View {
 
                             })
 
-                    }.onDelete(perform: { indexSet in
-
-                        if let index = indexSet.first {
-                            print("index: \(index)")
-                            // TODO: Fix for swift data
-                            // projects.remove(at: index)
-                            // modelContext.delete(project)
-                        }
-
-                    })
+                    }.onDelete(perform: deleteProject)
 
                 }.navigationBarItems(
                     leading:
@@ -58,8 +56,8 @@ struct ContentView: View {
                             .foregroundColor(Color("cold_spring_gray"))
 
                     })
-
-            }.accentColor(Color(.white))
+            }
+            .accentColor(Color(.white))
 
         }.ignoresSafeArea(.all)
     }
