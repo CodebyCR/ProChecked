@@ -31,7 +31,7 @@ struct ContentView: View {
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
 
-            NavigationView {
+            NavigationStack {
                 List {
                     ForEach(projects) { project in
 

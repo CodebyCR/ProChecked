@@ -23,7 +23,7 @@ struct NewProjectView: View {
     var newDescription: String = ""
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color("rich_gray"), Color("cold_spring_gray")]),
                                startPoint: .topLeading,
