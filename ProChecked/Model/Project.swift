@@ -34,6 +34,12 @@ final class Project {
 //        self.color = color
 //        self.tasks = []
 //    }
+
+    public static var container: ModelContainer? = {
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try? ModelContainer(for: Project.self, configurations: configuration)
+        return container
+    }()
 }
 
 func getRandomColor() -> Color {

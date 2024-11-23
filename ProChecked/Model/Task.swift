@@ -18,4 +18,10 @@ class Task {
         self.taskTitle = taskTitle
         self.taskText = taskText
     }
+
+    public static var container: ModelContainer? = {
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try? ModelContainer(for: Task.self, configurations: configuration)
+        return container
+    }()
 }

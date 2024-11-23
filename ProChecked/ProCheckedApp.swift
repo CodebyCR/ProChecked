@@ -9,10 +9,15 @@ import SwiftUI
 
 @main
 struct ProCheckedApp: App {
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [Project.self, Task.self])
+                .modelContainer(Project.container!)
+                .modelContainer(Task.container!)
+                //.modelContainer(for: [Project.self, Task.self])
         }
     }
+
+
 }
