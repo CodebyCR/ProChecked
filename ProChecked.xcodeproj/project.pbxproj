@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0481D92CF10483006A447A /* SelectImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0481D82CF10479006A447A /* SelectImageView.swift */; };
 		8E390BD32AC8131000B9AFE4 /* AddTaskButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E390BD22AC8131000B9AFE4 /* AddTaskButtonView.swift */; };
 		8E390BD52AC8135F00B9AFE4 /* TaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E390BD42AC8135F00B9AFE4 /* TaskItemView.swift */; };
 		8E3D19AC2822DEF500BA3B13 /* ProjectHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3D19AB2822DEF500BA3B13 /* ProjectHeadView.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E0481D82CF10479006A447A /* SelectImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageView.swift; sourceTree = "<group>"; };
 		8E390BD22AC8131000B9AFE4 /* AddTaskButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButtonView.swift; sourceTree = "<group>"; };
 		8E390BD42AC8135F00B9AFE4 /* TaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemView.swift; sourceTree = "<group>"; };
 		8E3D19AB2822DEF500BA3B13 /* ProjectHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectHeadView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		8E3D19AA2822D61900BA3B13 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E0481D82CF10479006A447A /* SelectImageView.swift */,
 				8EC43AB42AD2E23900A83992 /* ProjectViewGroup */,
 				8E72AEEF281B2D3600B1971C /* DetailTaskView.swift */,
 				8E3D19AB2822DEF500BA3B13 /* ProjectHeadView.swift */,
@@ -345,6 +348,7 @@
 				8E3D19AC2822DEF500BA3B13 /* ProjectHeadView.swift in Sources */,
 				8E72AEF2281B2D6100B1971C /* NewProjectView.swift in Sources */,
 				8E390BD52AC8135F00B9AFE4 /* TaskItemView.swift in Sources */,
+				8E0481D92CF10483006A447A /* SelectImageView.swift in Sources */,
 				8E72AEC0281B272D00B1971C /* ContentView.swift in Sources */,
 				8E390BD32AC8131000B9AFE4 /* AddTaskButtonView.swift in Sources */,
 				8E72AEF0281B2D3600B1971C /* DetailTaskView.swift in Sources */,
