@@ -5,6 +5,7 @@
 //  Created by Christoph Rohde on 27.01.22.
 //
 
+import PhotosUI
 import SwiftData
 import SwiftUI
 
@@ -31,40 +32,29 @@ struct NewProjectView: View {
                     .edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    ZStack {
-                        Color(.black)
-                            .frame(width: 100, height: 100, alignment: .top)
-                            .opacity(0.6)
-                            //                            .mask(Capsule(style: .circular))
-                            .clipShape(Circle())
+                    SelectImageView()
 
-                        Image(systemName: "camera")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .frame(width: 100, height: 100)
-                            .mask(Capsule(style: .continuous))
-                    }
-
-                    VStack(spacing: 20) {
-                        TextField("Titel", text: $newTitle)
-                            //                            .fontWeight(.bold)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.5)
-                            .padding(.vertical, 1)
-
-                        //                        laufweite
-
-                        TextField("Project description here...", text: $newDescription)
-                            //                            .fontWeight(.light)
-                            .foregroundColor(Color("rich_ground"))
-                            .lineLimit(5)
+                    Section {
+                        TextField("Title", text: $newTitle)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding()
-                            .frame(width: 200, height: 30, alignment: .center)
-                            .foregroundColor(.white)
+                            .background(Color.white)
+                            .cornerRadius(10)
 
-                    }.padding(80)
+                        TextField("Description", text: $newDescription)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(10)
 
+                        // Spacer()
+                    }.padding(
+                        EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+                    )
+                    .background(Color.white)
+                    .cornerRadius(10)
+
+                    Spacer()
 //      List{
 //
 //            Button("Add Task") {
@@ -106,7 +96,8 @@ struct NewProjectView: View {
                     imageName: "",
                     title: newTitle,
                     description: newDescription,
-                    color: "")
+                    color: ""
+                )
 
                 // Füge das neue Projekt hinzu
                 modelContext.insert(newProject)
